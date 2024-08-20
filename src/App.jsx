@@ -5,6 +5,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import { Error404 } from "./pages/Error";
+import { Register } from "./components/info";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 function App() {
   return (
@@ -12,8 +15,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />}>
+          <Route path=":more-infor" element={<Register />} />
+        </Route>
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<Blog />}/>
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <footer className="text-center font-semibold">
