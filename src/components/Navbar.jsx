@@ -8,10 +8,15 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about" state={{ deji: true }}>
+            About
+          </Link>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/blog">Blog</Link>
+        </li>
+        <li>
+          <Link to="/contact?q=ui.dev&src=typed_query&f=live">Contact</Link>
         </li>
         <li>
           <Link
