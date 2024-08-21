@@ -1,19 +1,23 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { MdOutlineLightMode } from "react-icons/md";
 import { RiMoonClearFill } from "react-icons/ri";
 
 const Navbar = () => {
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { darkMode, setDarkMode, pathname } = useContext(ThemeContext);
+  // const { location: pathname } = useLocation();
 
   const handleClick = () => {
     setDarkMode(!darkMode);
     console.log(darkMode);
+    console.log(pathname);
   };
 
   return (
-    <nav className="absolute flex w-full justify-between items-center top-3 z-10 px-10 ">
+    <nav
+      className={`  " bg-transparent absolute flex w-full justify-between items-center top-3 z-10 px-10 `}
+    >
       <ul className="flex justify-around w-full text-2xl">
         <li>
           <Link to="/">Home</Link>
@@ -41,12 +45,13 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <span onClick={handleClick} className="text-2xl mt-1" >
-        {darkMode ? (
-          <RiMoonClearFill />
-        ) : (
-          <MdOutlineLightMode/>
-        )}
+      <span
+        onClick={handleClick}
+        className={` ${
+          pathname == "/settings" ? "text-white" : "text-black"
+        } text-2xl mt-1`}
+      >
+        {darkMode ? <RiMoonClearFill /> : <MdOutlineLightMode />}
       </span>
     </nav>
   );
