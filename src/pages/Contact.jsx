@@ -8,7 +8,7 @@ const Contact = () => {
 
   console.log(q, src, f);
   return (
-    <div className="h-screen bg-red-500 pt-20">
+    <div className="h-screen bg-yellow-500 pt-20">
       <h1 className="pl-10">Contact</h1>
       <div className=" px-20 pl-[28rem]">
         <p className="pr-5 leading-relaxed text-lg">
