@@ -1,9 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "../contexts/ThemeContext";
+import { MdOutlineLightMode } from "react-icons/md";
+import { RiMoonClearFill } from "react-icons/ri";
 
 const Navbar = () => {
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  const handleClick = () => {
+    setDarkMode(!darkMode);
+    console.log(darkMode);
+  };
+
   return (
-    <nav className="absolute w-full top-3 ">
-      <ul className="flex justify-around text-2xl">
+    <nav className="absolute flex w-full justify-between items-center top-3 z-10 px-10 ">
+      <ul className="flex justify-around w-full text-2xl">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -30,6 +41,13 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+      <span onClick={handleClick} className="text-2xl mt-1" >
+        {darkMode ? (
+          <RiMoonClearFill />
+        ) : (
+          <MdOutlineLightMode/>
+        )}
+      </span>
     </nav>
   );
 };
