@@ -1,17 +1,13 @@
 import { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { MdOutlineLightMode } from "react-icons/md";
 import { RiMoonClearFill } from "react-icons/ri";
 
 const Navbar = () => {
   const { darkMode, setDarkMode, pathname } = useContext(ThemeContext);
-  // const { location: pathname } = useLocation();
-
   const handleClick = () => {
     setDarkMode(!darkMode);
-    console.log(darkMode);
-    console.log(pathname);
   };
 
   return (
