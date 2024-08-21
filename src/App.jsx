@@ -19,7 +19,7 @@ function App() {
           <Route path=":more-infor" element={<Register />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Blog />}/>
+        <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
