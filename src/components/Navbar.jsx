@@ -10,6 +10,12 @@ const Navbar = () => {
     setDarkMode(!darkMode);
   };
 
+  // Check if the pathname is not defined in your routes
+  const isWildcardPath = pathname !== "/" &&
+    pathname !== "/about" &&
+    pathname !== "/blog" &&
+    pathname !== "/contact" &&
+    !pathname.startsWith("/blog/")
   return (
     <nav
       className={`  " bg-transparent absolute flex w-full justify-between items-center top-3 z-10 px-10 `}
@@ -44,7 +50,7 @@ const Navbar = () => {
       <span
         onClick={handleClick}
         className={` ${
-          pathname == "/settings" ? "text-white" : "text-black"
+          isWildcardPath && darkMode  ? "text-white" : "text-black"
         } text-2xl mt-1`}
       >
         {darkMode ? <RiMoonClearFill /> : <MdOutlineLightMode />}
