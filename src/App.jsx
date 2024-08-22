@@ -5,9 +5,11 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import { Error404 } from "./pages/Error";
-import { Register } from "./components/info";
+import { Registered } from "./components/info";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -15,8 +17,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />}>
-          <Route path=":more-infor" element={<Register />} />
+          <Route path=":more-infor" element={<Registered />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />

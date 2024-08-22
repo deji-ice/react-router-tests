@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-export function Register() {
+export function Registered() {
   const [toDashboard, setToDashboard] = useState(false);
 
   if (toDashboard === true) {
