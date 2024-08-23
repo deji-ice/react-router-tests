@@ -6,12 +6,19 @@ import { loginEndpoint } from "../services/apiEndpoints";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+     localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   const login = async (credentials) => {
     try {
-        await axios
+      await axios
         .post(loginEndpoint, credentials)
         .then((res) => {
           console.log(res.data);
@@ -21,7 +28,6 @@ export const AuthProvider = ({ children }) => {
         .catch((err) => {
           console.error(err);
         });
-
     } catch (error) {
       console.error("Login failed", error);
     }
