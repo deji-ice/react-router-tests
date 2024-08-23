@@ -2,15 +2,18 @@ import { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Home = () => {
-  
   const { darkMode } = useContext(ThemeContext);
   return (
     <div
       className={`${
-        darkMode ? "bg-slate-700 text-white" : "bg-slate-100 text-black"
+        darkMode ? "bg-slate-950 text-white" : "bg-slate-100 text-black"
       } h-screen pt-20 font-aeonik_regular`}
     >
-      <h1 className="pl-10 text-purple-700 underline decoration-white underline-offset-2">
+      <h1
+        className={`pl-10 text-red-700 underline ${
+          darkMode ? "decoration-white" : "decoration-black"
+        } underline-offset-2`}
+      >
         Home
       </h1>
       <div className=" px-20 pl-[28rem]">
