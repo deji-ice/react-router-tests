@@ -2,13 +2,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { useContext, useState } from "react";
-import axios from "axios";
 import { loginEndpoint } from "../services/apiEndpoints";
 import { AuthContext } from "../contexts/AuthProvider";
+import { ImSpinner } from "react-icons/im";
 
 const Login = () => {
   const { darkMode } = useContext(ThemeContext);
-  const { user, login } = useContext(AuthContext);
+  const { user, login, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     userName: "",
@@ -34,8 +34,8 @@ const Login = () => {
       .catch((error) => {
         console.error("Login failed", error);
       });
-      const a = await user;
-      console.log(a)
+    const a = await user;
+    console.log(a);
   };
 
   return (
@@ -79,8 +79,8 @@ const Login = () => {
               onChange={handleChange}
             />
           </div>
-          <button className="bg-[#CF1D1D] text-center self-center text-white h-9 rounded-md w-1/2">
-            Login
+          <button className="bg-[#CF1D1D] text-center flex items-center justify-center self-center text-white h-9 rounded-md w-1/2">
+            {loading ? <ImSpinner className="animate-spin" /> : "Login"}
           </button>
           <p className="text-gray-500 text-center text-sm">
             Don't have an account?{" "}

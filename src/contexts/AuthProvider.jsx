@@ -13,23 +13,25 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-     localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
   const login = async (credentials) => {
     try {
+      setLoading(true);
       await axios
         .post(loginEndpoint, credentials)
         .then((res) => {
           console.log(res.data);
-          alert(`${res.data.message}`);
           setUser(res.data);
+          setLoading(false);
         })
         .catch((err) => {
           console.error(err);
         });
     } catch (error) {
       console.error("Login failed", error);
+      setLoading(false);
     }
   };
 
