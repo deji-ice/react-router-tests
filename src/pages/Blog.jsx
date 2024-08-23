@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const Blog = () => {
   const [blogPosts] = useState(data?.blogPosts);
   return (
-    <div className="bg-red-800">
+    <div className=" font-aeonik_regular">
       <h1>Blog</h1>
       <div className="grid grid-cols-3 px-16 gap-10 justify-items-center py-10">
         {blogPosts.map((post) => (

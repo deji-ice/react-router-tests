@@ -8,7 +8,7 @@ const Home = () => {
     <div
       className={`${
         darkMode ? "bg-slate-700 text-white" : "bg-slate-100 text-black"
-      } h-screen pt-20`}
+      } h-screen pt-20 font-aeonik_regular`}
     >
       <h1 className="pl-10 text-purple-700 underline decoration-white underline-offset-2">
         Home

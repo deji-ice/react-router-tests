@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { MdOutlineLightMode } from "react-icons/md";
 import { RiH1, RiMoonClearFill } from "react-icons/ri";
@@ -27,44 +27,45 @@ const Navbar = () => {
     <nav
       className={` ${
         darkMode ? "text-white" : "text-black"
-      }bg-transparent absolute flex w-full justify-between items-center top-3 z-10 px-10 `}
+      } fixed bg-yellow-100/20 top-0 flex w-full font-aeonik_regular justify-between items-center py-3 z-10 px-10 `}
     >
       <ul
         className={`flex justify-between px-5 ${
           darkMode ? "text-white" : "text-black"
-        } w-full text-lg`}
+        } w-full `}
       >
-        <Link to="/">
+        <NavLink to="/">
           <HiHome className="text-2xl" />
-        </Link>
+        </NavLink>
 
         {!isAuthPage ? (
           <>
-            {/* <li>
-              <Link to="/">Home</Link>
-            </li> */}
-            <li>
-              <Link to="/about" state={{ deji: true }}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog">Blog</Link>
-            </li>
-            <li>
-              <Link to="/contact?q=ui.dev&src=typed_query&f=live">Contact</Link>
-            </li>
-            <li>
-              <Link
-                to={{
-                  pathname: "/settings",
-                  search: "?sort=date",
-                  state: { fromHome: true },
-                }}
-              >
-                Settings
-              </Link>
-            </li>
+            <div className="flex gap-10">
+              <li>
+                <NavLink to="/about" state={{ deji: true }}>
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/blog">Blog</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact?q=ui.dev&src=typed_query&f=live">
+                  Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: "/settings",
+                    search: "?sort=date",
+                    state: { fromHome: true },
+                  }}
+                >
+                  Settings
+                </NavLink>
+              </li>
+            </div>
 
             <div
               className={`flex  gap-4 ${
@@ -76,16 +77,18 @@ const Navbar = () => {
               {user ? (
                 <>
                   <li>
-                    <Link to={"/login"} onClick={logout}>Logout</Link>
+                    <NavLink to={"/login"} onClick={logout}>
+                      Logout
+                    </NavLink>
                   </li>
                 </>
               ) : (
                 <>
                   <li>
-                    <Link to={"/register"}>Register</Link>
+                    <NavLink to={"/register"}>Register</NavLink>
                   </li>
                   <li>
-                    <Link to={"/login"}>Login</Link>
+                    <NavLink to={"/login"}>Login</NavLink>
                   </li>
                 </>
               )}
@@ -97,7 +100,7 @@ const Navbar = () => {
         onClick={handleClick}
         className={` ${
           isWildcardPath && darkMode ? "text-white" : "text-black"
-        }  hover:cursor-pointer text-2xl mt-1`}
+        }  hover:cursor-pointer text-2xl mt-1 `}
       >
         {darkMode ? <MdOutlineLightMode /> : <RiMoonClearFill />}
       </span>
