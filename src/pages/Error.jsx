@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 
 export const Error404 = () => {
