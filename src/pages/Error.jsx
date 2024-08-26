@@ -9,8 +9,8 @@ export const Error404 = () => {
   return (
     <div
       className={`${
-        darkMode ? "bg-black" : "bg-white"
-      }  h-screen flex items-center pt-5 text-white`}
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      }  h-screen flex items-center pt-5 gap-10 `}
     >
       <h1 className="pl-10">404 Not Found</h1>
       {state && <div className=" px-20 pl-[28rem]" />}
