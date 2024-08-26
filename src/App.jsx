@@ -4,14 +4,15 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
-import {Error404} from "./pages/Error";
-import {Registered} from "./components/info";
+import { Error404 } from "./pages/Error";
+import { Registered } from "./components/info";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthProvider";
+import Gsap from "./pages/Gsap";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -20,11 +21,9 @@ function App() {
     <div className="font-aeonik_regular">
       <Navbar />
       <Routes>
-           
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         {/* Authenticated Routes */}
         {user ? (
-
           <>
             <Route path="/about" element={<About />}>
               <Route path=":more-info" element={<Registered />} />
@@ -33,12 +32,13 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<Error404 />} />
+            <Route path="/gsap" element={<Gsap />} />
           </>
         ) : (
           <>
             {/* Non-Authenticated Routes */}
             {/* <Route path="/" element={<Navigate to="/login" />} /> */}
-           
+
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Navigate to="/login" />} />
