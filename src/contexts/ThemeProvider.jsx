@@ -12,7 +12,9 @@ const ThemeProvider = ({ children }) => {
   });
   // Use useEffect to update localStorage whenever the theme changes
   useEffect(() => {
+
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    console.log(darkMode)
     console.log(localStorage.getItem("darkMode"));
   }, [darkMode]);
 

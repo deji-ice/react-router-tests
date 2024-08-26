@@ -50,11 +50,14 @@ const Navbar = () => {
                 <NavLink to="/blog">Blog</NavLink>
               </li>
               <li>
+                <NavLink to="/gsap">Gsap</NavLink>
+              </li>
+              <li>
                 <NavLink to="/contact?q=ui.dev&src=typed_query&f=live">
                   Contact
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to={{
                     pathname: "/settings",
@@ -64,7 +67,7 @@ const Navbar = () => {
                 >
                   Settings
                 </NavLink>
-              </li>
+              </li> */}
             </div>
 
             <div
