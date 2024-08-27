@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { MdOutlineLightMode } from "react-icons/md";
 import { RiH1, RiMoonClearFill } from "react-icons/ri";
 import { HiHome, HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../contexts/AuthProvider";
+import { CiUser } from "react-icons/ci";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const { darkMode, setDarkMode, pathname } = useContext(ThemeContext);
   const { user, logout } = useContext(AuthContext);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
   const handleClick = () => {
     setDarkMode((prev) => !prev);
   };
@@ -70,30 +73,51 @@ const Navbar = () => {
               </li> */}
             </div>
 
-            <div
-              className={`flex  gap-4 ${
-                darkMode
-                  ? "text-black *:bg-gray-200"
-                  : "text-white *:bg-gray-950"
-              } *:rounded-md *:px-3 *:py-1 text-sm`}
-            >
+            <div className={`flex items-center text-2xl cursor-pointer`}>
               {user ? (
-                <>
-                  <li>
-                    <NavLink to={"/login"} onClick={logout}>
-                      Logout
-                    </NavLink>
-                  </li>
-                </>
+                <li>
+                  <FaRegCircleUser
+                    onClick={() => setShowUserDropdown((prev) => !prev)}
+                  />
+
+                  {showUserDropdown && (
+                    <div className="absolute top-12 right-3 bg-white shadow-md rounded-md p-2 z-10">
+                      <ul className="text-gray-700 text-sm w-36 flex flex-col gap-2  *:py-1">
+                        {/* <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
+                          <NavLink to="/profile">Profile</NavLink>
+                        </li> */}
+                        <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
+                          <NavLink to="/settings">Account Settings</NavLink>
+                        </li>
+                        <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
+                          <button
+                            onClick={() => {
+                              logout();
+                              setShowUserDropdown(false);
+                            }}
+                          >
+                            Logout
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </li>
               ) : (
-                <>
+                <div
+                  className={`flex  gap-4 ${
+                    darkMode
+                      ? "text-black *:bg-gray-200"
+                      : "text-white *:bg-gray-600"
+                  } *:rounded-md *:px-3 *:py-1 text-sm`}
+                >
                   <li>
                     <NavLink to={"/register"}>Register</NavLink>
                   </li>
                   <li>
                     <NavLink to={"/login"}>Login</NavLink>
                   </li>
-                </>
+                </div>
               )}
             </div>
           </>
@@ -103,7 +127,7 @@ const Navbar = () => {
         onClick={handleClick}
         className={` ${
           isWildcardPath && darkMode ? "text-white" : "text-black"
-        }  hover:cursor-pointer text-2xl mt-1 `}
+        }  hover:cursor-pointer text-2xl  `}
       >
         {darkMode ? <MdOutlineLightMode /> : <RiMoonClearFill />}
       </span>
