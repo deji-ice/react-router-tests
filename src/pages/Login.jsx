@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { loginEndpoint } from "../services/apiEndpoints";
 import { AuthContext } from "../contexts/AuthProvider";
 import { ImSpinner } from "react-icons/im";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -15,6 +16,7 @@ const Login = () => {
     userName: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState("password");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -68,13 +70,18 @@ const Login = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 relative">
+            {showPassword === "password" ? (
+              <FaEye onClick={()=>setShowPassword("text")} className="text-gray-600 cursor-pointer absolute  right-5 top-9 text-xl" />
+            ) : (
+              <FaEyeSlash onClick={()=>setShowPassword("password")} className="text-gray-600 cursor-pointer absolute  right-5 top-9 text-xl" />
+            )}
             <label htmlFor="password" className="font-aeonik_bold ">
               Password
             </label>
             <input
               className="border-2 h-9 text-black border-gray-300 px-2 rounded-md"
-              type="password"
+              type={showPassword}
               id="password"
               required
               onChange={handleChange}
