@@ -8,6 +8,7 @@ import { HiHome, HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../contexts/AuthProvider";
 import { CiUser } from "react-icons/ci";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { useJwt } from "react-jwt";
 
 const Navbar = () => {
   const { darkMode, setDarkMode, pathname } = useContext(ThemeContext);
@@ -16,6 +17,10 @@ const Navbar = () => {
   const handleClick = () => {
     setDarkMode((prev) => !prev);
   };
+
+  const { decodedToken} = useJwt(user.token);
+
+  console.log(decodedToken, decodedToken?.userId);
 
   // Check if the pathname is not defined in your routes
   const isWildcardPath =
@@ -86,7 +91,7 @@ const Navbar = () => {
                         {/* <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
                           <NavLink to="/profile">Profile</NavLink>
                         </li> */}
-                        <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
+                        <li onClick={()=> setShowUserDropdown(false)} className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
                           <NavLink to="/settings">Account Settings</NavLink>
                         </li>
                         <li className={`hover:bg-slate-50 duration-200 px-3 py-0.5 rounded-md transition ease-in-out `}>
