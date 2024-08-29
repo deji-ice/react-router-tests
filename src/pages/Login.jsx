@@ -72,9 +72,15 @@ const Login = () => {
           </div>
           <div className="flex flex-col gap-1 relative">
             {showPassword === "password" ? (
-              <FaEye onClick={()=>setShowPassword("text")} className="text-gray-600 cursor-pointer absolute  right-5 top-9 text-xl" />
+              <FaEyeSlash
+                onClick={() => setShowPassword("text")}
+                className="text-gray-400 cursor-pointer absolute  right-5 top-9 text-xl"
+              />
             ) : (
-              <FaEyeSlash onClick={()=>setShowPassword("password")} className="text-gray-600 cursor-pointer absolute  right-5 top-9 text-xl" />
+              <FaEye
+                onClick={() => setShowPassword("password")}
+                className="text-gray-600 cursor-pointer absolute  right-5 top-9 text-xl"
+              />
             )}
             <label htmlFor="password" className="font-aeonik_bold ">
               Password
