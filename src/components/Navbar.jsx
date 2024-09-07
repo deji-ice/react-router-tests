@@ -18,9 +18,9 @@ const Navbar = () => {
     setDarkMode((prev) => !prev);
   };
 
-  const { decodedToken} = useJwt(user.token);
+  // const { decodedToken} = useJwt(user.token);
 
-  console.log(decodedToken, decodedToken?.userId);
+  // console.log(decodedToken, decodedToken?.userId);
 
   // Check if the pathname is not defined in your routes
   const isWildcardPath =
